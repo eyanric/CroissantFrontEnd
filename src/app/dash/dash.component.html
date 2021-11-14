@@ -31,8 +31,21 @@
     </mat-grid-tile>
     <!--Table-->
     <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
-      <app-card title="Latest Orders">
-        <app-orders-table></app-orders-table>
+      <app-card title="Text Editor">
+      <!-- Include stylesheet -->
+      <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+      <!-- Create the editor container -->
+      <div id="full-editor">
+      </div>
+      <!-- Include the Quill library -->
+      <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+      <!-- Initialize Quill editor -->
+      <script>
+        var quill = new Quill('#editor', {
+          theme: 'snow'
+        });
+      </script>
+
       </app-card>
     </mat-grid-tile>
   </mat-grid-list>
