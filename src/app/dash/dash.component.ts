@@ -43,12 +43,12 @@ export class DashComponent implements OnInit{
   constructor(private breakpointObserver: BreakpointObserver, private summaryService: StoreSummaryService) {}
 
   ngOnInit() {
-    hello();
     this.summaryService.getStoreSummary().subscribe({
       next: summaryData => {
         this.miniCardData = summaryData;
       }
     });
+    hello();
   }
 }
 function hello() {

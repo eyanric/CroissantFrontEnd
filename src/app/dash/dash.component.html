@@ -1,5 +1,9 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+
   <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px" cdkDropListGroup>
     <!--Mini Cards-->
     <mat-grid-tile cdkDropList [cdkDropListData]="i" *ngFor="let mc of miniCardData, let i = index;" [colspan]="( cardLayout | async )?.miniCard.cols"
@@ -32,20 +36,14 @@
     <!--Table-->
     <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
       <app-card title="Text Editor">
-      <!-- Include stylesheet -->
-      <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
       <!-- Create the editor container -->
       <div id="full-editor">
       </div>
-      <!-- Include the Quill library -->
-      <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-      <!-- Initialize Quill editor -->
       <script>
         var quill = new Quill('#editor', {
           theme: 'snow'
         });
       </script>
-
       </app-card>
     </mat-grid-tile>
   </mat-grid-list>
