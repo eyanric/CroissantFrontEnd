@@ -13,15 +13,14 @@
       </div>
     </mat-grid-tile>
     <!--Charts-->
-    <mat-grid-tile cdkDropList [cdkDropListData]="i" *ngFor="let mc of miniCardData, let i = index;" [colspan]="(cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+    <mat-grid-tile [colspan]="(cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
       <app-card title="Calculator">
-        <div id="table1" style="transform-origin: 100 0;" [style.transform]="'scale('+scale+')'">
+        <div id="table" style="transform-origin: 100 0;" [style.transform]="'scale('+scale+')'">
           <table style="width:100%">
             <ngx-numaric-keypad [calc]="true" (getVal)="getNumberValue($event)"></ngx-numaric-keypad>
           </table>
         </div>
       </app-card>
-
     </mat-grid-tile>
     <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
       <app-card title="Product Sales">
