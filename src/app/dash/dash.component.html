@@ -13,10 +13,15 @@
       </div>
     </mat-grid-tile>
     <!--Charts-->
-    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
-      <app-card title="Monthly Revenue">
-        <app-annual-sale-chart></app-annual-sale-chart>
+    <mat-grid-tile cdkDropList [cdkDropListData]="i" *ngFor="let mc of miniCardData, let i = index;" [colspan]="(cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Calculator">
+        <div id="table1" style="transform-origin: 100 0;" [style.transform]="'scale('+scale+')'">
+          <table style="width:100%">
+            <ngx-numaric-keypad [calc]="true" (getVal)="getNumberValue($event)"></ngx-numaric-keypad>
+          </table>
+        </div>
       </app-card>
+
     </mat-grid-tile>
     <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
       <app-card title="Product Sales">
@@ -33,8 +38,8 @@
         <app-store-sessions-chart></app-store-sessions-chart>
       </app-card>
     </mat-grid-tile>
-    <!--Table-->
-    <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
+    <!--Text Editor-->
+    <mat-grid-tile [colspan]="( cardLayout | async )?.textEditor.cols" [rowspan]="( cardLayout | async )?.textEditor.rows">
       <app-card title="Text Editor">
       <!-- Create the editor container -->
       <div id="full-editor">

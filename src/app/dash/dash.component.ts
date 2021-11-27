@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { StoreSummaryService } from '../store-summary/store-summary.service';
 import { StoreSummary } from '../store-summary/store-summary';
-import { CdkDragEnd, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
 import * as Quill from 'quill';
+import { KeypadComponent } from 'ngx-numaric-keypad';
 
 @Component({
   selector: 'app-dash',
@@ -13,11 +14,11 @@ import * as Quill from 'quill';
 })
 
 export class DashComponent implements OnInit{
+  scale: string = '0.5';
+
   entered(event: CdkDragEnter) {
     moveItemInArray(this.miniCardData, event.item.data, event.container.data);
   }
-
-
   cardLayout = this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Tablet]).pipe(
     map(({ matches }) => {
       if (matches) {
@@ -25,7 +26,7 @@ export class DashComponent implements OnInit{
           columns: 1,
           miniCard: { cols: 1, rows: 1 },
           chart: { cols: 1, rows: 2 },
-          table: { cols: 1, rows: 4 },
+          textEditor: { cols: 1, rows: 4 },
         };
       }
 
@@ -33,7 +34,7 @@ export class DashComponent implements OnInit{
         columns: 4,
         miniCard: { cols: 1, rows: 1 },
         chart: { cols: 2, rows: 2 },
-        table: { cols: 4, rows: 4 },
+        textEditor: { cols: 4, rows: 4 },
       };
     })
   );
@@ -49,6 +50,9 @@ export class DashComponent implements OnInit{
       }
     });
     hello();
+  }
+  getNumberValue(numberD: any) {
+    console.log(numberD, "number")
   }
 }
 function hello() {

@@ -32,6 +32,10 @@ import { StoreSessionsChartComponent } from './charts/store-sessions-chart/store
 import { OrdersTableComponent } from './orders/orders-table/orders-table.component';
 import { DragDropComponent } from './drag-drop/drag-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { KeypadModule } from 'ngx-numaric-keypad';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -68,9 +72,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatChipsModule,
     MatProgressBarModule,
     HttpClientModule,
-    DragDropModule
+    DragDropModule,
+    KeypadModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
